@@ -4,23 +4,23 @@ from tkinter.filedialog import askopenfilename
 from tkinter import messagebox
 
 
-def image1():  # getting image 1
+def image1():  
     photo1 = askopenfilename()
-    if photo1:  # check if file is selected
+    if photo1: 
         global img1
         img1 = cv2.imread(photo1)
         img1 = cv2.resize(img1, (500, 500))
 
 
-def image2():  # getting image 2
+def image2():  
     photo2 = askopenfilename()
-    if photo2:  # check if file is selected
+    if photo2:  #
         global img2
         img2 = cv2.imread(photo2)
         img2 = cv2.resize(img2, (500, 500))
 
 
-def proceed():  # reading alpha and displaying output
+def proceed():  
     try:
         global img1, img2
         alpha = t.get(1.0, "end-1c")
@@ -41,7 +41,7 @@ def proceed():  # reading alpha and displaying output
         messagebox.showerror("Error", "Alpha must be a valid number.")
 
 
-# Tkinter window setup
+
 window = tk.Tk()
 window.title("Image Blending")
 window.geometry('300x140')
