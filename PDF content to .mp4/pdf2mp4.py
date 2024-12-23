@@ -1,4 +1,4 @@
-# Import libraries
+
 from PIL import Image
 import pytesseract
 from mutagen.mp3 import MP3
@@ -12,8 +12,8 @@ import sys
 def pdf2text(PDF_file):
     """Extract text from a PDF file."""
     try:
-        # Convert PDF pages to images
-        pages = convert_from_path(PDF_file, 300)  # Lower DPI for faster processing
+        
+        pages = convert_from_path(PDF_file, 300)  
         image_counter = 1
         text = ""
 
@@ -27,9 +27,8 @@ def pdf2text(PDF_file):
         for i in range(1, image_counter):
             filename = f"page_{i}.jpg"
             text += pytesseract.image_to_string(Image.open(filename))
-            os.remove(filename)  # Delete the temporary image file
-
-        text = text.replace('-\n', '')  # Handle split words across lines
+            os.remove(filename)  
+        text = text.replace('-\n', '')  
         return text
 
     except Exception as e:
@@ -72,23 +71,23 @@ def text2video(mtext, video_file, pdf_file_name):
         sys.exit(1)
 
 if __name__ == "__main__":
-    # Get the name of the PDF file
+
     PDF_file = input("Enter the name of PDF file with extension (e.g., file.pdf): ")
 
     if not os.path.exists(PDF_file) or not PDF_file.lower().endswith('.pdf'):
         print(f"Error: File '{PDF_file}' does not exist or is not a PDF.")
         sys.exit(1)
 
-    # Get the name of the video file
+    
     video_file = input("Enter the name of video file with extension (e.g., file.mp4): ")
 
     if not os.path.exists(video_file) or not video_file.lower().endswith(('.mp4', '.mov', '.avi')):
         print(f"Error: File '{video_file}' does not exist or is not a valid video format.")
         sys.exit(1)
 
-    # Extract text from PDF
+    
     text = pdf2text(PDF_file)
 
-    # Convert text to video
+    
     text2video(text, video_file, PDF_file)
 
