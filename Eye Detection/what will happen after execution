@@ -1,0 +1,1 @@
+When you run this script, it opens your webcam and starts detecting eyes in real time. It draws rectangles around any eyes it detects and shows the count on the video feed. You can see this live in a window called "Eye Detection." If you press 'q,' the program stops and closes everything. Oh, and it saves the last processed frame as "detect.png" in the current folder.
