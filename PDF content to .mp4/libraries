@@ -1,0 +1,6 @@
+pip install pillow
+pip install pytesseract
+pip install moviepy
+pip install gtts
+pip install pdf2image
+pip install mutagen
